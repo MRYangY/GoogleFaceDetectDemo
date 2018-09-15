@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "810894595316",
+    "firebase_url": "https://facedetectdemo-179cf.firebaseio.com",
+    "project_id": "facedetectdemo-179cf",
+    "storage_bucket": "facedetectdemo-179cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810894595316:android:393a3fe9325f8f12",
+        "android_client_info": {
+          "package_name": "com.example.yumryang.googlefacedetectdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810894595316-f0k24h9m54afn4bs4ifojb2a7tic61g2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yumryang.googlefacedetectdemo",
+            "certificate_hash": "03003bab956f894c084883d1a405d8fc40a2072f"
+          }
+        },
+        {
+          "client_id": "810894595316-vpu5npbbvnst0tllf3d3bttenfk7vlkh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH0Xzu5KHRvBNHup5JJ0wjPx5Sq5xZSOQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810894595316-vpu5npbbvnst0tllf3d3bttenfk7vlkh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

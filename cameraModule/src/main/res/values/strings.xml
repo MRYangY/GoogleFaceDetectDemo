@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CameraModule</string>
+    <string name="init_camera_error">相机启动失败</string>
+    <string name="not_support_preview_size">不支持这个分辨率</string>
+</resources>
