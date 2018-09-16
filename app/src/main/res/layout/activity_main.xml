@@ -7,20 +7,16 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <Button
+        android:id="@+id/go_preview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="Go Preview" />
 
-        <SurfaceView
-            android:id="@+id/surface_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <com.example.yumryang.googlefacedetectdemo.GraphicOverlay
-            android:id="@+id/graphic_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </FrameLayout>
-
+    <Button
+        android:id="@+id/go_picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go Picture" />
 
 </LinearLayout>

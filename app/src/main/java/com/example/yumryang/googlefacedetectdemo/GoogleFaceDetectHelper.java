@@ -44,8 +44,8 @@ public class GoogleFaceDetectHelper {
     }
 
     private void init() {
-        previewWidth = ((MainActivity) mContext).getPreviewWidth();
-        previewHeight = ((MainActivity) mContext).getPreviewHeight();
+        previewWidth = ((LivePreviewActivity) mContext).getPreviewWidth();
+        previewHeight = ((LivePreviewActivity) mContext).getPreviewHeight();
         paddingBuffer = new byte[previewWidth * previewHeight * 3 / 2];
         options = new FirebaseVisionFaceDetectorOptions.Builder()
                 //是否开启追踪模式，开启追踪模式后，才可以获得的unique id
@@ -78,7 +78,7 @@ public class GoogleFaceDetectHelper {
 
     public void setmOverlay(GraphicOverlay mOverlay) {
         this.mOverlay = mOverlay;
-        mOverlay.setCameraInfo(previewWidth, previewHeight, MainActivity.mCurrentCameraIndex);
+        mOverlay.setCameraInfo(previewWidth, previewHeight, LivePreviewActivity.mCurrentCameraIndex);
     }
 
     public void onStartDetect() {
@@ -153,7 +153,7 @@ public class GoogleFaceDetectHelper {
                 FirebaseVisionFace face = firebaseVisionFaces.get(i);
                 FaceGraphic faceGraphic = new FaceGraphic(mOverlay);
                 mOverlay.add(faceGraphic);
-                faceGraphic.updateFace(face, MainActivity.mCurrentCameraIndex);
+                faceGraphic.updateFace(face, LivePreviewActivity.mCurrentCameraIndex);
             }
         }
     };
