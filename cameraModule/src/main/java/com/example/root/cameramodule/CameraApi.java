@@ -38,6 +38,7 @@ public class CameraApi implements Camera.PreviewCallback {
     private Camera mCamera = null;
     private Camera.Parameters mCameraParameters;
 
+    //for google firebase ML Kit vision
     private int mRotation;
 
     private CameraApi() {
@@ -178,11 +179,12 @@ public class CameraApi implements Camera.PreviewCallback {
         //根据前置与后置摄像头的不同，设置预览方向，否则会发生预览图像倒过来的情况。
         if (cameraInfo.facing == android.hardware.Camera.CameraInfo.CAMERA_FACING_FRONT) {
             displayRotation = (cameraInfo.orientation + degrees) % 360;
+            mRotation = (cameraInfo.orientation + degrees) % 360;
             displayRotation = (360 - displayRotation) % 360; // compensate
         } else {
-            displayRotation = (cameraInfo.orientation - degrees + 360) % 360;
+            mRotation = (cameraInfo.orientation - degrees + 360) % 360;
+            displayRotation = mRotation;
         }
-        mRotation = displayRotation;
         this.mCamera.setDisplayOrientation(displayRotation);
     }
 
@@ -208,7 +210,7 @@ public class CameraApi implements Camera.PreviewCallback {
     }
 
     public int getRotation(){
-        return mRotation;
+        return mRotation / 90;
     }
 
     /**
