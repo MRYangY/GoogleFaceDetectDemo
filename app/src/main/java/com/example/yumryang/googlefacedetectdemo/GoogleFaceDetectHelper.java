@@ -14,6 +14,7 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
 
+import java.io.IOException;
 import java.util.List;
 
 public class GoogleFaceDetectHelper {
@@ -91,6 +92,16 @@ public class GoogleFaceDetectHelper {
 
     public void onStopDetect() {
         isStart = false;
+        mOverlay.clear();
+        if (mDetectThread != null) {
+            try {
+                mDetectThread.join(1000);
+                mDetectThread = null;
+                faceDetector.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -120,9 +131,12 @@ public class GoogleFaceDetectHelper {
         @Override
         public void run() {
             super.run();
-            while (isStart) {
+            while (true) {
                 synchronized (mLock) {
-                    while (mDate == null) {
+                    if (!isStart) {
+                        return;
+                    }
+                    if (mDate == null) {
                         try {
                             mLock.wait();
                         } catch (InterruptedException e) {
@@ -130,10 +144,10 @@ public class GoogleFaceDetectHelper {
                             return;
                         }
                     }
+                    System.arraycopy(mDate, 0, paddingBuffer, 0, mDate.length);
+                    mDate = null;
+                    visionImage = FirebaseVisionImage.fromByteArray(paddingBuffer, metadata);
                 }
-                System.arraycopy(mDate, 0, paddingBuffer, 0, mDate.length);
-                mDate = null;
-                visionImage = FirebaseVisionImage.fromByteArray(paddingBuffer, metadata);
                 faceDetector.detectInImage(visionImage).addOnSuccessListener(onSuccessListener)
                         .addOnFailureListener(onFailureListener);
 
