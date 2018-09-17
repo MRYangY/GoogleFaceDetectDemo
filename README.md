@@ -6,3 +6,5 @@
 
 ### 效果图
 ![image](https://github.com/MRYangY/GoogleFaceDetectDemo/blob/master/app/src/main/res/effect-image/g121.gif)
+
+如果觉得还不错,就Star鼓励一下吧~;-)
